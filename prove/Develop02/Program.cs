@@ -1,4 +1,6 @@
 using System;
+using JournalApp;
+
 
 namespace JournalApp
 {
@@ -6,6 +8,7 @@ namespace JournalApp
     {
         static void Main()
         {
+            SecretJournal secretJournal = new SecretJournal();
             Journal journal = new Journal();
             PromptGenerator promptGen = new PromptGenerator();
             bool running = true;
@@ -18,7 +21,9 @@ namespace JournalApp
                 Console.WriteLine("3. Save journal to file");
                 Console.WriteLine("4. Load journal from file");
                 Console.WriteLine("5. Quit");
-                Console.Write("Choose an option (1-5): ");
+                Console.WriteLine("6. Write a secret entry (password protected)");
+                Console.WriteLine("7. View secret journal entries");
+                Console.Write("Choose an option (1-7): ");
 
                 string choice = Console.ReadLine();
 
@@ -53,6 +58,14 @@ namespace JournalApp
                     case "5":
                         running = false;
                         Console.WriteLine("Goodbye!");
+                        break;
+
+                    case "6":
+                        secretJournal.StartSecretEntryFlow();
+                        break;
+
+                    case "7":
+                        secretJournal.ViewSecretEntries();
                         break;
 
                     default:
