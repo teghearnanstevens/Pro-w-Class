@@ -1,9 +1,96 @@
+// using System;
+// using System.Dynamic;
+// using System.Runtime.CompilerServices;
+// using System.Security.Cryptography.X509Certificates;
+
+// public class Program
+// {
+//     public class Fraction
+//     {
+//         private int _top;
+//         private int _bottom;
+
+//         public Fraction()
+//         {
+//             _top = 1;
+//             _bottom = 1;
+//         }
+
+//         public Fraction(int whole)
+//         {
+//             _top = whole;
+//             _bottom = 1;
+//         }
+
+//         public Fraction(int top, int bottom)
+//         {
+//             _top = top;
+//             _bottom = bottom;
+//         }
+
+//         public int GetBottom()
+//         {
+//             return _bottom;
+//         }
+
+//         public int GetTop()
+//         {
+//             return _top;
+//         }
+
+//         public string GetFractionString()
+//         {
+//             string fractionString = $"{_top}/{_bottom}";
+//             return fractionString;
+//         }
+
+//         public double GetDecimalValue()
+//         {
+//             double decimalValue = (double)_top / (double)_bottom;
+//             return decimalValue;
+//         }
+
+//     }
+       
+    
+// }
+
 using System;
 
-class Program
+public class Fraction
 {
-    static void Main(string[] args)
+    private int _top;
+    private int _bottom;
+
+    public Fraction()
     {
-        Console.WriteLine("Hello Learning03 World!");
+       
+        _top = 1;
+        _bottom = 1;
+    }
+
+    public Fraction(int wholeNumber)
+    {
+        _top = wholeNumber;
+        _bottom = 1;
+    }
+
+    public Fraction(int top, int bottom)
+    {
+        _top = top;
+        _bottom = bottom;
+    }
+
+    public string GetFractionString()
+    {
+        
+        string text = $"{_top}/{_bottom}";
+        return text;
+    }
+
+    public double GetDecimalValue()
+    {
+        
+        return (double)_top / (double)_bottom;
     }
 }
