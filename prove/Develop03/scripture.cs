@@ -76,38 +76,48 @@ public class Scripture
             wordToHide.Hide();
         }
     }
+    
+    public bool CheckUserGuess(string input)
+{
+    string original = string.Join(" ", _words.Select(w => w.GetRawText()));
+    string guess = new string(input.Where(c => !char.IsPunctuation(c)).ToArray()).ToLower();
+    original = new string(original.Where(c => !char.IsPunctuation(c)).ToArray()).ToLower();
+
+    return original.Trim() == guess.Trim();
+}
+
 
 
     public static List<Scripture> LoadScriptures(string filePath)
-{
-    List<Scripture> scriptures = new List<Scripture>();
-    string[] lines = File.ReadAllLines(filePath);
-
-    for (int i = 0; i < lines.Length; i += 2)
     {
-        string referenceLine = lines[i].Trim();       
-        string textLine = lines[i + 1].Trim();        
+        List<Scripture> scriptures = new List<Scripture>();
+        string[] lines = File.ReadAllLines(filePath);
 
-       
-        int lastSpaceIndex = referenceLine.LastIndexOf(' ');
-        string book = referenceLine.Substring(0, lastSpaceIndex);
-        string chapterVerse = referenceLine.Substring(lastSpaceIndex + 1);
+        for (int i = 0; i < lines.Length; i += 2)
+        {
+            string referenceLine = lines[i].Trim();
+            string textLine = lines[i + 1].Trim();
 
-        string[] chapterVerseParts = chapterVerse.Split(':');
-        int chapter = int.Parse(chapterVerseParts[0]);
 
-        
-        string versePart = chapterVerseParts[1].Split('-')[0];
-        int verse = int.Parse(versePart);
+            int lastSpaceIndex = referenceLine.LastIndexOf(' ');
+            string book = referenceLine.Substring(0, lastSpaceIndex);
+            string chapterVerse = referenceLine.Substring(lastSpaceIndex + 1);
 
-        Reference reference = new Reference(book, chapter, verse);
-        Scripture scripture = new Scripture(reference, textLine);
+            string[] chapterVerseParts = chapterVerse.Split(':');
+            int chapter = int.Parse(chapterVerseParts[0]);
 
-        scriptures.Add(scripture);
+
+            string versePart = chapterVerseParts[1].Split('-')[0];
+            int verse = int.Parse(versePart);
+
+            Reference reference = new Reference(book, chapter, verse);
+            Scripture scripture = new Scripture(reference, textLine);
+
+            scriptures.Add(scripture);
+        }
+
+        return scriptures;
     }
-
-    return scriptures;
-}
 
 
 

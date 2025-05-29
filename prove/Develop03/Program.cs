@@ -25,8 +25,9 @@ class Program
             Console.WriteLine("1. Pick a Scripture");
             Console.WriteLine("2. Hide More Words");
             Console.WriteLine("3. Show All Words");
-            Console.WriteLine("4. Quit");
-            Console.Write("Choose an option (1-4): ");
+            Console.WriteLine("4. Practice Typing the Scripture");
+            Console.WriteLine("5. Quit");
+            Console.Write("Choose an option (1-5): ");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -66,6 +67,28 @@ class Program
                     break;
 
                 case "4":
+                    if (selectedScripture != null)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Type the scripture from memory:");
+                        string userInput = Console.ReadLine();
+
+                        if (selectedScripture.CheckUserGuess(userInput))
+                        {
+                            Console.WriteLine("✅ Yes! You got it!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("❌ Oops! That wasn't quite right. Try again!");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please select a scripture first.");
+                    }
+                    break;
+
+                    case "5":
                     running = false;
                     break;
 

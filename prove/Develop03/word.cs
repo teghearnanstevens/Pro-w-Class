@@ -28,4 +28,11 @@ public class Word
     {
         return _visible ? _text : "_____";
     }
+
+    public string GetRawText()
+    {
+        return _text;
+    }
+
+
 }
