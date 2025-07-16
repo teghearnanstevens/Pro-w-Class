@@ -6,4 +6,5 @@ public abstract class Financial
     public abstract void Load();
     public abstract void Save();
     public abstract void Process();
+    public abstract void Display();
 }

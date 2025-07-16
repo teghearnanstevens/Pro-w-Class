@@ -23,7 +23,6 @@ public class QuestionsCL
             var allQuestions = _backend.GetAllQuestions();
 
             Console.WriteLine("\nPlease pick a question to get the answer:");
-
             for (int i = 0; i < allQuestions.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {allQuestions[i]}");
